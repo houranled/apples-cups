@@ -902,6 +902,7 @@ cupsdContinueJob(cupsd_job_t *job)	/* I - Job */
   argv[4] = copies;
   argv[5] = options;
 
+
   if (job->printer->remote && job->num_files > 1)
   {
     for (i = 0; i < job->num_files; i ++)

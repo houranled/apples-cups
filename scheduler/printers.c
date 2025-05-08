@@ -3944,7 +3944,7 @@ load_ppd(cupsd_printer_t *p)		/* I - Printer */
     * Add make/model and other various attributes...
     */
 
-    p->pc = _ppdCacheCreateWithPPD(ppd);
+    p->pc = _ppdCacheCreateWithPPD(ppd); //todo lhr 顺序
 
     if (!p->pc)
       cupsdLogMessage(CUPSD_LOG_WARN, "Unable to create cache of \"%s\": %s",
@@ -4101,8 +4101,8 @@ load_ppd(cupsd_printer_t *p)		/* I - Printer */
       * media-default
       */
 
-      if ((size = ppdPageSize(ppd, NULL)) != NULL)
-        pwgsize = _ppdCacheGetSize(p->pc, size->name);
+      if ((size = ppdPageSize(ppd, NULL)) != NULL) //name为NULL, 则不更新纸张信息, 仅获取默认sizes
+        pwgsize = _ppdCacheGetSize(p->pc, size->name); //todo lhr 获取pwgsize失败
       else
         pwgsize = NULL;
 

@@ -107,7 +107,7 @@ ppdClose(ppd_file_t *ppd)		/* I - PPD file record */
   ppd_group_t		*group;		/* Current group */
   char			**font;		/* Current font */
   ppd_attr_t		**attr;		/* Current attribute */
-  ppd_coption_t		*coption;	/* Current custom option */
+  ppd_coption_t	*coption;	/* Current custom option */
   ppd_cparam_t		*cparam;	/* Current custom parameter */
 
 
@@ -2919,7 +2919,7 @@ static int				/* O - Bitmask of fields read */
 ppd_read(cups_file_t    *fp,		/* I - File to read from */
          _ppd_line_t    *line,		/* I - Line buffer */
          char           *keyword,	/* O - Keyword from line */
-	 char           *option,	/* O - Option from line */
+	 char           *option,    	/* O - Option from line */
          char           *text,		/* O - Human-readable text from line */
 	 char           **string,	/* O - Code/string data */
          int            ignoreblank,	/* I - Ignore blank lines? */

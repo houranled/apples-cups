@@ -901,7 +901,7 @@ ppd_mark_option(ppd_file_t *ppd,	/* I - PPD file */
     * Make sure that we keep the option marked below...
     */
 
-    choice = "Custom";
+//    choice = "Custom"; //todo lhr delete
   }
   else if (choice[0] == '{')
   {
@@ -1011,9 +1011,13 @@ ppd_mark_option(ppd_file_t *ppd,	/* I - PPD file */
       * Mark current page size...
       */
 
-      for (j = 0; j < ppd->num_sizes; j ++)
+      for (j = 0; j < ppd->num_sizes; j ++) {
 	ppd->sizes[j].marked = !_cups_strcasecmp(ppd->sizes[j].name,
-		                           choice);
+		                           "Custom");
+        if (ppd->sizes[j].marked) { //todo lhr 添加
+          strlcpy(ppd->sizes[j].name, choice, sizeof(ppd->sizes[j].name));
+        }
+      }
 
      /*
       * Unmark the current PageSize or PageRegion setting, as

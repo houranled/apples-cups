@@ -2652,7 +2652,7 @@ _ppdCacheGetSize(
   if (!pc || !page_size)
     return (NULL);
 
-  if (!_cups_strncasecmp(page_size, "Custom.", 7))
+  if (!_cups_strncasecmp(page_size, "Custom.", 7))//todo Custom and Custom.
   {
    /*
     * Custom size; size name can be one of the following:
@@ -2711,6 +2711,9 @@ _ppdCacheGetSize(
 
     pc->custom_size.width  = (int)w;
     pc->custom_size.length = (int)l;
+
+    pwg_media_t *pwg_media = pwgMediaForSize(w, l);
+    pc->custom_size.map.pwg = (char*)pwg_media->pwg; //todo lhr custom pagesize的pwg赋值
 
     return (&(pc->custom_size));
   }
