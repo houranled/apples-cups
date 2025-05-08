@@ -1092,9 +1092,9 @@ _ppdCacheCreateWithPPD(ppd_file_t *ppd)	/* I - PPD file */
      /*
       * Don't copy over custom size...
       */
-
-      if (!_cups_strcasecmp(ppd_size->name, "Custom"))
-	continue;
+//    todo lhr 临时删除
+//      if (!_cups_strcasecmp(ppd_size->name, "Custom"))
+//	continue;
 
      /*
       * Convert the PPD size name to the corresponding PWG keyword name.

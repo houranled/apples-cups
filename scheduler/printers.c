@@ -3943,15 +3943,15 @@ load_ppd(cupsd_printer_t *p)		/* I - Printer */
    /*
     * Add make/model and other various attributes...
     */
-
+    ppdMarkDefaults(ppd); //todo lhr 调换位置
     p->pc = _ppdCacheCreateWithPPD(ppd);
 
     if (!p->pc)
       cupsdLogMessage(CUPSD_LOG_WARN, "Unable to create cache of \"%s\": %s",
                       ppd_name, cupsLastErrorString());
 
-    ppdMarkDefaults(ppd);
 
+    
     if (ppd->color_device)
       p->type |= CUPS_PRINTER_COLOR;
     if (ppd->variable_sizes)
